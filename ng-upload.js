@@ -141,7 +141,16 @@ angular.module('ngUpload', [])
           // if form is invalid don't submit (e.g. keypress 13)
           if(formController && formController.$invalid) return false;
           // perform check before submit file
-          if (options.beforeSubmit) { return options.beforeSubmit(); }
+          if (options.beforeSubmit) {
+
+                var back=options.beforeSubmit(scope);
+
+                console.log(back);
+
+                if (back) {scope.$apply(function() {});
+                }
+                return back;
+            }
 
           // bind load after submit to prevent initial load triggering uploadEnd
           iframe.bind('load', uploadEnd);
