@@ -145,8 +145,6 @@ angular.module('ngUpload', [])
 
                 var back=options.beforeSubmit(scope);
 
-                console.log(back);
-
                 if (back) {scope.$apply(function() {});
                 }
                 return back;
